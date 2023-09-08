@@ -23,6 +23,7 @@
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/im_profile_image"
         android:layout_width="60dp"
+        app:strokeColor="@null"
         app:shapeAppearanceOverlay="@style/roundedCornersImageView"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
