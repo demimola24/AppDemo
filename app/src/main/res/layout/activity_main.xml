@@ -28,7 +28,7 @@
              android:textStyle="bold"
              android:textColor="@color/black"
              android:textSize="17sp"
-             android:text="List of students"
+             android:text="@string/app_bar_title"
              android:layout_gravity="center"
              android:id="@+id/toolbar_title" />
 
@@ -55,5 +55,19 @@
        app:layout_constraintEnd_toEndOf="parent"
        app:layout_constraintTop_toTopOf="parent"
        app:layout_constraintBottom_toBottomOf="parent"/>
+
+   <TextView
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:textStyle="bold"
+       android:textColor="@color/black"
+       android:textSize="17sp"
+       android:visibility="gone"
+       android:text="@string/no_data"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintTop_toTopOf="parent"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintBottom_toBottomOf="parent"
+       android:id="@+id/no_data_found" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

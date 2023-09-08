@@ -3,6 +3,7 @@ package com.example.androidapp
 import android.os.Bundle
 import android.view.View
 import android.widget.ProgressBar
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -30,6 +31,8 @@ class MainActivity : AppCompatActivity() {
 
         val recyclerView =  findViewById<RecyclerView>(R.id.recyclerView)
         val progressView =  findViewById<ProgressBar>(R.id.progress)
+        val noDataView =  findViewById<TextView>(R.id.no_data_found)
+
         adapter = ViewAdapter()
         recyclerView.adapter = adapter
         viewModel.fetchStudents()
@@ -39,9 +42,12 @@ class MainActivity : AppCompatActivity() {
                 when (response) {
                     is Result.Success -> {
                         progressView.visibility = View.GONE
-
                         response.data?.let {
                             adapter.submitList(it)
+                            if (it.isEmpty())
+                                noDataView.visibility = View.VISIBLE
+                            else
+                                noDataView.visibility = View.GONE
                         }
                     }
 
