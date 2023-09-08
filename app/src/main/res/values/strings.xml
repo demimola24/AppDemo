@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">AndroidApp</string>
+    <string name="age_string">%s years</string>
+</resources>
