@@ -19,7 +19,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private val viewModel: MainViewModel by viewModels()
-    private lateinit var adapter : ViewAdapter
+    private lateinit var adapter: ViewAdapter
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,11 +27,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
-        supportActionBar?.setDisplayShowTitleEnabled(false);
+        supportActionBar?.setDisplayShowTitleEnabled(false)
 
-        val recyclerView =  findViewById<RecyclerView>(R.id.recyclerView)
-        val progressView =  findViewById<ProgressBar>(R.id.progress)
-        val noDataView =  findViewById<TextView>(R.id.no_data_found)
+        val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
+        val progressView = findViewById<ProgressBar>(R.id.progress)
+        val noDataView = findViewById<TextView>(R.id.no_data_found)
 
         adapter = ViewAdapter()
         recyclerView.adapter = adapter

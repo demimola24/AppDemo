@@ -10,7 +10,7 @@ import javax.inject.Inject
 
 
 class StudentDataSource
-@Inject constructor(private val apiService: StudentService) : StudentRepository, BaseRepository()   {
+@Inject constructor(private val apiService: StudentService) : StudentRepository, BaseRepository() {
 
     override suspend fun fetchStudents(): Flow<DataResult<List<UserData>>> {
         return flow {

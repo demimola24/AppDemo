@@ -44,7 +44,7 @@ object AppModule {
     @Singleton
     @Provides
     fun provideConverterFactory(): GsonConverterFactory =
-         GsonConverterFactory.create()
+        GsonConverterFactory.create()
 
     @Singleton
     @Provides

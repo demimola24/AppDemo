@@ -35,7 +35,7 @@ class MainActivityTest {
         )
     }
 
-    fun waitUntil(matcher: Matcher<View>): ViewAction = object : ViewAction {
+    private fun waitUntil(matcher: Matcher<View>): ViewAction = object : ViewAction {
 
         override fun getConstraints(): Matcher<View> {
             return any(View::class.java)
@@ -64,7 +64,7 @@ class MainActivityTest {
         }
     }
 
-    fun hasItemCount(itemCount: Matcher<Int>): BoundedMatcher<View, RecyclerView> {
+    private fun hasItemCount(itemCount: Matcher<Int>): BoundedMatcher<View, RecyclerView> {
         return object : BoundedMatcher<View, RecyclerView>(RecyclerView::class.java) {
             override fun matchesSafely(view: RecyclerView): Boolean {
                 return view.adapter?.let {

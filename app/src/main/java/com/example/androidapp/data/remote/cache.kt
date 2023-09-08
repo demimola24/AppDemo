@@ -26,9 +26,9 @@ class OfflineCacheInterceptor(val context: Context) : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
         val builder: Request.Builder = chain.request().newBuilder()
         if (!isNetworkAvailable(context)) {
-            builder.cacheControl(CacheControl.FORCE_CACHE);
+            builder.cacheControl(CacheControl.FORCE_CACHE)
         }
-        return chain.proceed(builder.build());
+        return chain.proceed(builder.build())
     }
 
     private fun isNetworkAvailable(context: Context) =

@@ -7,22 +7,24 @@ import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.androidapp.utils.GlideApp
 import com.example.androidapp.R
 import com.example.androidapp.data.models.UserData
+import com.example.androidapp.utils.GlideApp
 import com.google.android.material.imageview.ShapeableImageView
 
 class ViewAdapter : ListAdapter<UserData, RecyclerView.ViewHolder>(UserCallBack()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return when(viewType) {
+        return when (viewType) {
             ODD_ITEM_VIEW -> {
-                val view = LayoutInflater.from(parent.context).inflate(R.layout.odd_item_layout,parent,false)
+                val view = LayoutInflater.from(parent.context)
+                    .inflate(R.layout.odd_item_layout, parent, false)
                 ListenItemViewHolder(view)
             }
 
             EVEN_PRODUCT_VIEW -> {
-                val view = LayoutInflater.from(parent.context).inflate(R.layout.even_item_layout,parent,false)
+                val view = LayoutInflater.from(parent.context)
+                    .inflate(R.layout.even_item_layout, parent, false)
                 ListenItemViewHolder(view)
             }
             else -> throw IllegalArgumentException()
@@ -35,20 +37,20 @@ class ViewAdapter : ListAdapter<UserData, RecyclerView.ViewHolder>(UserCallBack(
     }
 
     override fun getItemViewType(position: Int): Int {
-        return if (position%2==0) EVEN_PRODUCT_VIEW else ODD_ITEM_VIEW
+        return if (position % 2 == 0) EVEN_PRODUCT_VIEW else ODD_ITEM_VIEW
     }
 
 
     inner class ListenItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val nameTv: TextView = itemView.findViewById(R.id.tv_profile_name)
         private val ageTv: TextView = itemView.findViewById(R.id.tv_profile_age)
-        private  val classTv: TextView = itemView.findViewById(R.id.tv_class)
+        private val classTv: TextView = itemView.findViewById(R.id.tv_class)
         private val classNumber: TextView = itemView.findViewById(R.id.tv_reg_number)
         private val imageIv: ShapeableImageView = itemView.findViewById(R.id.im_profile_image)
 
-        fun bind(userData : UserData) {
+        fun bind(userData: UserData) {
             nameTv.text = userData.name
-            ageTv.text = itemView.context.getString(R.string.age_string,userData.age.toString())
+            ageTv.text = itemView.context.getString(R.string.age_string, userData.age.toString())
             classTv.text = userData.department
             classNumber.text = userData.profileId.uppercase()
             GlideApp.with(itemView.context).load(userData.avatar).into(imageIv)
@@ -57,7 +59,7 @@ class ViewAdapter : ListAdapter<UserData, RecyclerView.ViewHolder>(UserCallBack(
 
     class UserCallBack : DiffUtil.ItemCallback<UserData>() {
         override fun areItemsTheSame(oldItem: UserData, newItem: UserData): Boolean {
-            return oldItem.id == newItem.id;
+            return oldItem.id == newItem.id
         }
 
         override fun areContentsTheSame(oldItem: UserData, newItem: UserData): Boolean {

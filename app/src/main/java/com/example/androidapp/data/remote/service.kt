@@ -2,7 +2,7 @@ package com.example.androidapp.data.remote
 
 import com.example.androidapp.data.models.UserData
 import retrofit2.Response
-import retrofit2.http.*
+import retrofit2.http.GET
 
 interface StudentService {
     @GET("api/v1/students")
