@@ -61,8 +61,8 @@ object AppModule {
     }
 
     @Provides
-    fun provideStudentDataSource(@Named("Normal") retrofit: Retrofit): StudentDataSource {
+    fun provideStudentDataSource(@Named("Normal") retrofit: Retrofit): StudentRepository {
         val service = retrofit.create(StudentService::class.java)
-        return StudentRepository(service)
+        return StudentDataSource(service)
     }
 }

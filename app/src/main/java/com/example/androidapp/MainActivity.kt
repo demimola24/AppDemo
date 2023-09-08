@@ -11,7 +11,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
 import com.example.androidapp.adapter.ViewAdapter
-import com.example.androidapp.utils.Result
+import com.example.androidapp.utils.DataResult
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
         with(viewModel) {
             responseLiveData.observe(this@MainActivity, Observer { response ->
                 when (response) {
-                    is Result.Success -> {
+                    is DataResult.Success -> {
                         progressView.visibility = View.GONE
                         response.data?.let {
                             adapter.submitList(it)
@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity() {
                         }
                     }
 
-                    is Result.Error -> {
+                    is DataResult.Error -> {
                         progressView.visibility = View.GONE
                         Toast.makeText(
                             this@MainActivity,
@@ -60,7 +60,7 @@ class MainActivity : AppCompatActivity() {
                         ).show()
                     }
 
-                    is Result.Loading -> {
+                    is DataResult.Loading -> {
                         progressView.visibility = View.VISIBLE
                     }
                 }

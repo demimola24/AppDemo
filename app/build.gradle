@@ -52,7 +52,7 @@ dependencies {
     implementation "com.github.bumptech.glide:glide:$glide"
     implementation "com.github.bumptech.glide:compiler:$glide"
 
-    //Coroutines
+    //Coroutine2
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:$coroutinesVersion"
@@ -86,4 +86,7 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    testImplementation "org.mockito:mockito-core:3.4.6"
+    testImplementation "androidx.arch.core:core-testing:2.1.0"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinesVersion"
 }

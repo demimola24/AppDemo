@@ -1,17 +1,17 @@
 package com.example.androidapp.data.remote
 
-import com.example.androidapp.utils.Result
+import com.example.androidapp.utils.DataResult
 import retrofit2.Response
 
 abstract class BaseRepository {
 
-    suspend fun <T> processApiCall(apiCall: suspend () -> Response<T>): Result<T> {
+    suspend fun <T> processApiCall(apiCall: suspend () -> Response<T>): DataResult<T> {
         try {
             val response = apiCall()
             if (response.isSuccessful) {
                 val body = response.body()
                 body?.let {
-                    return Result.Success(body)
+                    return DataResult.Success(body)
                 }
             }
             return error("${response.code()} ${response.message()}")
@@ -20,6 +20,6 @@ abstract class BaseRepository {
         }
     }
 
-    private fun <T> error(errorMessage: String): Result<T> =
-        Result.Error("Call failed because:  $errorMessage")
+    private fun <T> error(errorMessage: String): DataResult<T> =
+        DataResult.Error("Call failed because:  $errorMessage")
 }
